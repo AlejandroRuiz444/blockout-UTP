@@ -1,0 +1,53 @@
+name: tests
+
+# Se ejecuta en cada PR hacia main y en cada push a main. Corre en Linux (ubuntu-latest), así que también deja
+# evidencia de que los tests y la aplicación funcionan en Linux. Los pasos se saltan solos mientras el repositorio
+# está en construcción (por etapas): ver docs/GIT_WORKFLOW.md.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  tests:
+    name: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Tests en Node (Linux)
+        run: |
+          if [ -f app/tests/run.js ]; then
+            node app/tests/run.js
+          else
+            echo "Aún no hay tests (etapa de diseño)."
+          fi
+
+      - name: Tests en el navegador (Chrome headless, Linux)
+        if: ${{ hashFiles('app/tests/index.html') != '' }}
+        run: |
+          set -eu
+          CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          out=$("$CHROME" --headless=new --no-sandbox --disable-gpu --virtual-time-budget=10000 --dump-dom "file://$PWD/app/tests/index.html")
+          echo "$out" | grep -o 'TODO CORRECTO: [0-9]* verificaciones' || {
+            echo "$out" | sed -n '/id="out"/,/<\/pre>/p'
+            exit 1
+          }
+
+      - name: La aplicación abre sin mensajes de consola (Chrome headless, Linux)
+        if: ${{ hashFiles('app/index.html') != '' }}
+        run: |
+          set -eu
+          CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          log=$("$CHROME" --headless=new --no-sandbox --disable-gpu --enable-logging=stderr --v=0 --virtual-time-budget=4000 --dump-dom "file://$PWD/app/index.html" 2>&1 >/dev/null | grep -i 'CONSOLE\|Uncaught' || true)
+          if [ -n "$log" ]; then
+            echo "La aplicación escribió en la consola del navegador:"
+            echo "$log"
+            exit 1
+          fi
+          echo "Sin mensajes de consola."
