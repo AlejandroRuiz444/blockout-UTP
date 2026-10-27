@@ -1,0 +1,2 @@
+# Evita que Windows convierta saltos de línea (CRLF) y ensucie diffs y revisiones
+* text=auto eol=lf
