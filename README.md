@@ -8,7 +8,7 @@ Proyecto de Visión por Computador (Universidad Tecnológica de Pereira, 2026-II
 
 | Integrante | Rol |
 |---|---|
-| Estudiante 1 | A: escena y geometría (y coordinación del seguimiento) |
+| Alejandro (Estudiante 1, @AlejandroRuiz444) | A: escena y geometría (y coordinación del seguimiento) |
 | Juan | B: cámara y proyección |
 | Yohan | C: interfaz y animación |
 

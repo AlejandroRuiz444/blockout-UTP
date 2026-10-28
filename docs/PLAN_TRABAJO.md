@@ -1,6 +1,6 @@
 # Plan de trabajo y seguimiento (plantilla)
 
-> **Plantilla.** Roles asignados: Estudiante 1 = A (y coordinación), Juan = B, Yohan = C. Los marcadores `[fecha]`, `[enlace]` y `[tu nombre]` los completa el equipo. Este archivo **no** contiene fechas, avances ni commits reales: se llenan a medida que se trabaja. El enunciado pide actualizar el seguimiento al menos semanalmente, registrar fechas reales, bloqueos, decisiones y ajustes del cronograma, y vincular cada tarea con sus *commits* y solicitudes de integración (PR).
+> **Plantilla.** Roles asignados: Estudiante 1 = A (y coordinación), Juan = B, Yohan = C. Los marcadores `[fecha]` y `[enlace]` los completa el equipo. Este archivo **no** contiene fechas, avances ni commits reales: se llenan a medida que se trabaja. El enunciado pide actualizar el seguimiento al menos semanalmente, registrar fechas reales, bloqueos, decisiones y ajustes del cronograma, y vincular cada tarea con sus *commits* y solicitudes de integración (PR).
 >
 > **Nota de honestidad:** el código base de este repositorio fue preparado con asistencia de un agente de IA (ver [../AI_USAGE.md](../AI_USAGE.md)). Una tarea solo pasa a **terminada** cuando su responsable humano la revisó, la entiende, la explica y la integró por PR con revisión de otro compañero.
 
@@ -10,7 +10,7 @@ El orden concreto de los *pull requests*, quién sube cada uno y quién lo revis
 
 | Rol | Responsable | Módulo |
 |---|---|---|
-| A: escena y geometría | Estudiante 1 (`[tu nombre]`) | `app/src/scene/` y, por equilibrio de carga, `app/src/animation/` (`easing`, `motion`, `victory`) |
+| A: escena y geometría | Estudiante 1: Alejandro (@AlejandroRuiz444) | `app/src/scene/` y, por equilibrio de carga, `app/src/animation/` (`easing`, `motion`, `victory`) |
 | B: cámara y proyección | Juan | `app/src/projection/` y `app/src/core/` |
 | C: interfaz y animación | Yohan | `app/src/animation/demo.js`, `app/src/ui/`, `index.html`, `css/` |
 | Coordinación del seguimiento (además de su rol técnico) | Estudiante 1 (cambiable por acuerdo del equipo) | este plan, el cronograma y el tablero |

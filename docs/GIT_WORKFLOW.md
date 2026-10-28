@@ -108,7 +108,7 @@ Comentarios resueltos antes de integrar: [ ]
 
 Versión entregada: etiqueta `v[X.Y]` — <URL del repositorio>
 
-## Estudiante 1 — rol A, escena y geometría (cuenta: @[usuario])
+## Estudiante 1 (Alejandro) — rol A, escena y geometría (cuenta: @AlejandroRuiz444)
 - Contribución principal: <qué diseñó/implementó/verificó>
 - Commits representativos: <enlace>, <enlace>
 - PR propios: <enlace>, <enlace>
