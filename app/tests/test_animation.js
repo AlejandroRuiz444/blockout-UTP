@@ -184,4 +184,18 @@
       assert(!deepEqual(a.lines, b.lines), 'la animación se ve en 2D porque cambió la geometría 3D (t=' + (0.4 + i * 0.6).toFixed(1) + ')');
     }
   });
+
+  // ------------------------------------------------------------------ tower_layout (test propio del autor del PR)
+  test('tower_layout: la capa i queda a la altura Σ(profundidades previas) + i·GAP y no depende de la pose actual de las piezas', () => {
+    const lay = V.tower_layout(base);
+    const depths = [1, 1, 1, 1, 2, 2, 1];                  // profundidad (eje Z) de L3, T4, S4, O4, SCREW, CORNER3D, I3
+    assert(base.pieces.every((p, i) => S.PIECE_DEFS[p.type].size[2] === depths[i]), 'profundidades del catálogo');
+    let z = 0;
+    lay.forEach((l, i) => { approx(l.t[2], z, 1e-12, 'z de la capa ' + i); z += depths[i] + V.GAP; });
+    approx(z - V.GAP, 9 + 6 * V.GAP, 1e-12, 'altura total de la torre = Σ profundidades + 6·GAP');
+    const a = V.tower_layout(S.create_scene({ pieces: [{ type: 'SCREW', t: [0, 0, 0] }] }));
+    const b = V.tower_layout(S.create_scene({ pieces: [{ type: 'SCREW', t: [2, 2, 9] }] }));
+    assert(deepEqual(a, b) && a.length === 1 && a[0].t[2] === 0, 'una pieza en cualquier pose -> misma torre, apoyada en el piso');
+    assert(V.tower_layout(S.create_scene({ pieces: [] })).length === 0, 'sin piezas -> sin torre');
+  });
 })();
