@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Verificaciones de Blockout</title>
+  <link rel="icon" href="data:,">
+  <style>
+    body { font: 14px/1.4 system-ui, sans-serif; background: #0d1117; color: #c9d1d9; margin: 16px; }
+    pre { font: 13px/1.5 ui-monospace, Consolas, monospace; white-space: pre-wrap; }
+    .pass { color: #3fb950; } .fail { color: #f85149; }
+  </style>
+</head>
+<body>
+  <h1>Verificaciones de Blockout (navegador)</h1>
+  <p>Abrir este archivo con doble clic ejecuta las mismas verificaciones que <code>node app/tests/run.js</code>
+     (salvo las de arquitectura, que leen archivos y solo corren en Node).</p>
+  <h2 id="summary">Ejecutando…</h2>
+  <pre id="out"></pre>
+
+  <script src="harness.js"></script>
+  <script src="../src/core/linalg.js"></script>
+  <script src="../src/scene/pieces.js"></script>
+  <script src="../src/scene/mesh.js"></script>
+  <script src="../src/scene/container.js"></script>
+  <script src="../src/scene/scene.js"></script>
+  <script src="../src/projection/camera.js"></script>
+  <script src="../src/projection/projection.js"></script>
+  <script src="../src/projection/homography.js"></script>
+  <script src="../src/animation/easing.js"></script>
+  <script src="../src/animation/motion.js"></script>
+  <script src="../src/animation/victory.js"></script>
+  <script src="../src/animation/demo.js"></script>
+  <script src="../src/ui/input.js"></script>
+  <script src="../src/ui/render.js"></script>
+  <script src="../src/ui/hud.js"></script>
+  <script src="../src/ui/controller.js"></script>
+  <script src="../src/ui/homography_panel.js"></script>
+  <script src="test_linalg.js"></script>
+  <script src="test_scene.js"></script>
+  <script src="test_camera_projection.js"></script>
+  <script src="test_homography.js"></script>
+  <script src="test_animation.js"></script>
+  <script src="test_demo.js"></script>
+  <script src="test_input.js"></script>
+  <script src="test_controller.js"></script>
+  <script src="test_hud.js"></script>
+  <script>
+    const r = Harness.run();
+    document.getElementById('out').textContent = r.lines.join('\n');
+    const s = document.getElementById('summary');
+    s.textContent = r.failed === 0 ? 'TODO CORRECTO: ' + r.passed + ' verificaciones' : 'FALLAN ' + r.failed + ' de ' + (r.passed + r.failed);
+    s.className = r.failed === 0 ? 'pass' : 'fail';
+    document.title = (r.failed === 0 ? 'OK ' : 'FALLO ') + r.passed + '/' + (r.passed + r.failed);
+  </script>
+</body>
+</html>
