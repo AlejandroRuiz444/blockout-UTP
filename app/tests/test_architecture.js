@@ -64,6 +64,9 @@
       const src = code(f);
       for (const bad of [/webgl/i, /\bTHREE\b/, /three\.js/i, /matrix3d/i, /translate3d/i, /rotate3d/i, /perspective\s*\(/i, /\bgl\./]) assert(!bad.test(src), f + ' usa ' + bad);
       assert(!/(src|href)\s*=\s*["']https?:/i.test(read(f)) && !/url\(\s*["']?https?:/i.test(read(f)) && !/@import/i.test(read(f)), f + ' referencia un recurso remoto');
+      // `code()` descarta las cadenas, y 'webgl' / 'webgl2' / 'experimental-webgl' son justo cadenas de getContext: el único contexto permitido es '2d'
+      const sin_comentarios = read(f).replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:'"`\\])\/\/.*$/gm, '$1');
+      assert(!/getContext\(\s*(?!['"]2d['"][\s,)])/.test(sin_comentarios), f + ' pide un contexto de canvas distinto de 2d (WebGL/WebGPU)');
       assert(!/type\s*=\s*["']module["']/i.test(read(f)), f + ' usa <script type="module">');
       if (f.endsWith('.js')) assert(!/^\s*(import|export)\s/m.test(read(f)), f + ' usa módulos ES (bloqueados en file://)');
     }
