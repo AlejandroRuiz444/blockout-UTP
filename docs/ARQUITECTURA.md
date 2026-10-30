@@ -134,7 +134,7 @@ Salida de `node app/tests/deps.js` (leída del código):
   hud.js                Hud               117 líneas   usa: Scene, Render
   controller.js         Controller        127 líneas   usa: Scene, Camera, Easing, Motion, Victory, Demo
   homography_panel.js   HomographyPanel   113 líneas   usa: Scene, Projection, Homography, Render
-  main.js               (arranque)         66 líneas   usa: Scene, Camera, Projection, Input, Render, Hud, Controller, HomographyPanel
+  main.js               (arranque)         94 líneas   usa: Scene, Camera, Projection, Input, Render, Hud, Controller, HomographyPanel
 ```
 
 ## 5. Contratos entre roles (resumen)
