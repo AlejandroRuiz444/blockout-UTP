@@ -3,20 +3,99 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blockout desde una cámara móvil (Hito 2)</title>
+  <title>Blockout desde una cámara móvil</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
     <h1>Blockout desde una cámara móvil</h1>
-    <span class="badge">Hito 2: un contenedor y una pieza proyectados con K, R, t</span>
+    <span id="mode-badge" class="badge">Modo: normal</span>
+    <nav class="actions">
+      <button id="btn-victory" title="Animación de victoria (V)">Victoria <kbd>V</kbd></button>
+      <button id="btn-demo" title="Modo demostración (M)">Demo <kbd>M</kbd></button>
+      <button id="btn-homography" title="Experimento de homografía (H)">Homografía <kbd>H</kbd></button>
+      <button id="btn-reset" title="Restablecer la cámara (R)">Reiniciar cámara <kbd>R</kbd></button>
+    </nav>
   </header>
+
   <main>
     <section id="stage">
-      <canvas id="view" aria-label="Contenedor 3D y una pieza proyectados"></canvas>
+      <canvas id="view" tabindex="0" aria-label="Escena 3D proyectada"></canvas>
+      <div id="caption" hidden></div>
     </section>
+
+    <aside id="side">
+      <section>
+        <h2>Estado</h2>
+        <pre id="status"></pre>
+      </section>
+      <section>
+        <h2>Piezas <small>(1–7, Tab)</small></h2>
+        <div id="piece-list"></div>
+        <pre id="piece-info"></pre>
+      </section>
+      <section>
+        <h2>Controles</h2>
+        <table class="keys">
+          <tr><th>Pieza activa</th><td></td></tr>
+          <tr><td><kbd>←</kbd><kbd>→</kbd></td><td>trasladar en X −/+</td></tr>
+          <tr><td><kbd>↓</kbd><kbd>↑</kbd></td><td>trasladar en Y −/+</td></tr>
+          <tr><td><kbd>PgDn</kbd><kbd>PgUp</kbd> o <kbd>Shift</kbd>+<kbd>↓</kbd><kbd>↑</kbd></td><td>trasladar en Z −/+</td></tr>
+          <tr><td><kbd>Q</kbd><kbd>A</kbd> · <kbd>W</kbd><kbd>S</kbd> · <kbd>E</kbd><kbd>D</kbd></td><td>rotar ±90° en X · Y · Z</td></tr>
+          <tr><td><kbd>Tab</kbd> / <kbd>1</kbd>…<kbd>7</kbd></td><td>seleccionar pieza</td></tr>
+          <tr><th>Cámara</th><td></td></tr>
+          <tr><td>arrastrar · <kbd>J</kbd><kbd>L</kbd> · <kbd>I</kbd><kbd>K</kbd></td><td>órbita (acimut · elevación)</td></tr>
+          <tr><td>rueda · <kbd>−</kbd><kbd>=</kbd></td><td>distancia</td></tr>
+          <tr><td><kbd>[</kbd><kbd>]</kbd></td><td>campo de visión (focal)</td></tr>
+          <tr><td><kbd>R</kbd></td><td>reiniciar la vista</td></tr>
+          <tr><th>Aplicación</th><td></td></tr>
+          <tr><td><kbd>V</kbd> · <kbd>M</kbd> · <kbd>H</kbd> · <kbd>Esc</kbd></td><td>victoria · demo · homografía · detener</td></tr>
+        </table>
+      </section>
+      <section>
+        <h2>Cámara</h2>
+        <pre id="cam-info"></pre>
+      </section>
+      <section>
+        <h2>Cadena de proyección</h2>
+        <pre id="matrices"></pre>
+      </section>
+    </aside>
   </main>
+
+  <div id="hpanel" class="overlay" hidden>
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Experimento de homografía: plano Z = 0 del mundo</h2>
+        <button id="h-close">Cerrar <kbd>Esc</kbd></button>
+      </div>
+      <p class="note">Una homografía es una matriz 3×3 que relaciona las <em>imágenes de un plano</em> entre dos vistas. La cámara completa (3×4) <strong>no</strong> es una homografía.</p>
+      <div class="panel-controls">
+        <label>Vista 2:
+          <select id="h-mode">
+            <option value="preset">Cámara distinta (otro centro de cámara)</option>
+            <option value="live">Cámara principal (la actual al elegir esta opción)</option>
+            <option value="rotation">Mismo centro de cámara (rotación pura)</option>
+          </select>
+        </label>
+        <label>Ruido σ del DLT: <input id="h-sigma" type="range" min="0" max="3" step="0.1" value="0.5"> <output id="h-sigma-out">0.5 px</output></label>
+      </div>
+      <div class="views">
+        <figure><canvas id="h-c1" width="640" height="480"></canvas><figcaption id="h-cap1">Vista 1</figcaption></figure>
+        <figure><canvas id="h-c2" width="640" height="480"></canvas><figcaption id="h-cap2">Vista 2</figcaption></figure>
+      </div>
+      <p class="legend">
+        <span class="lg blue">●</span> puntos del plano Z = 0 (rellenos: los 4 del DLT; huecos: comprobación) ·
+        <span class="lg green">◯</span> proyección real en la vista 2 ·
+        <span class="lg cyan">+</span> predicción de H21 (analítica) ·
+        <span class="lg orange">◇</span> predicción del DLT con ruido σ ·
+        <span class="lg red">×</span> predicción de H21 para puntos con Z &gt; 0 y <span class="lg red">—</span> su error de paralaje
+      </p>
+      <div id="h-summary" class="summary"></div>
+      <pre id="h-report"></pre>
+    </div>
+  </div>
 
   <script src="src/core/linalg.js"></script>
   <script src="src/scene/pieces.js"></script>
@@ -25,7 +104,16 @@
   <script src="src/scene/scene.js"></script>
   <script src="src/projection/camera.js"></script>
   <script src="src/projection/projection.js"></script>
+  <script src="src/projection/homography.js"></script>
+  <script src="src/animation/easing.js"></script>
+  <script src="src/animation/motion.js"></script>
+  <script src="src/animation/victory.js"></script>
+  <script src="src/animation/demo.js"></script>
+  <script src="src/ui/input.js"></script>
   <script src="src/ui/render.js"></script>
+  <script src="src/ui/hud.js"></script>
+  <script src="src/ui/controller.js"></script>
+  <script src="src/ui/homography_panel.js"></script>
   <script src="src/ui/main.js"></script>
 </body>
 </html>
