@@ -54,10 +54,10 @@ Flujo de datos de **cada fotograma** (la misma cadena para la escena normal, la 
 ## 3. Estructura de carpetas
 
 ```
-Blockout/
-├─ README.md · AI_USAGE.md · proyecto_blockout.pdf
-├─ docs/            ARQUITECTURA · INTERFACES · INFORME · GUIA_DEMO · PLAN_TRABAJO · GIT_WORKFLOW
-├─ BlockOut/ ImageLib/                 juego original (solo referencia, NO se modifica)
+blockout-UTP/
+├─ README.md · AI_USAGE.md
+├─ docs/            ARQUITECTURA · INTERFACES · INFORME · GUIA_DEMO · PLAN_TRABAJO · PLAN_INTEGRACION · GIT_WORKFLOW
+├─ .github/         plantillas de PR y de tareas, y CI
 └─ app/
    ├─ index.html · css/style.css
    ├─ src/
