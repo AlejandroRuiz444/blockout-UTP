@@ -72,7 +72,9 @@ Capas (las dependencias solo bajan): `core` ← `scene` y `projection` (no se co
 - [docs/INTERFACES.md](docs/INTERFACES.md): coordenadas, estructuras, contratos de cada función, errores, propiedad del estado, ejemplo dorado.
 - [docs/INFORME.md](docs/INFORME.md): cadena de proyección, derivación de la homografía, resultados numéricos, limitaciones.
 - [docs/GUIA_DEMO.md](docs/GUIA_DEMO.md): sustentación, traza de un vértice y guion del video.
-- [docs/PLAN_TRABAJO.md](docs/PLAN_TRABAJO.md), [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md), [AI_USAGE.md](AI_USAGE.md).
+- [docs/PLAN_TRABAJO.md](docs/PLAN_TRABAJO.md): tareas con sus PR, hitos con fecha real, tablero y registro de seguimiento.
+- [docs/CONTRIBUCIONES.md](docs/CONTRIBUCIONES.md): declaración de contribuciones con enlaces a PR, *commits* y revisiones (borrador: cada integrante verifica su sección).
+- [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md), [AI_USAGE.md](AI_USAGE.md).
 
 ## Estado de verificación
 
