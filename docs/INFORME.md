@@ -69,7 +69,7 @@ Error = distancia en px entre `H·x₁` y la proyección real de `X` en la vista
 | (4.7, 2.7, 0) | no | (408.55, 300.13) | (338.93, 334.58) | 2.27e-13 | 8.04e-14 |
 | (0.2, 2.1, 0) | no | (231.10, 250.12) | (297.37, 230.10) | 1.42e-13 | 8.04e-14 |
 
-**RMS** H analítica (10 puntos) = 2.16e-13 px · RMS DLT (10 puntos) = 8.57e-14 px · RMS DLT en los 6 puntos no usados = 9.28e-14 px. Sin la normalización de Hartley, el RMS del DLT en esos 6 puntos es 2.25e-6 px (unos siete órdenes de magnitud peor, aunque todavía bajo la tolerancia de 1e-6 px de los tests). La tolerancia de los tests es 1e-6 px; los errores observados son ruido de redondeo en doble precisión.
+**RMS** H analítica (10 puntos) = 2.16e-13 px · RMS DLT (10 puntos) = 8.57e-14 px · RMS DLT en los 6 puntos no usados = 9.28e-14 px. Sin la normalización de Hartley, el RMS del DLT en esos 6 puntos es 2.25e-6 px: unos siete órdenes de magnitud peor y ya **por encima** de la tolerancia de 1e-6 px de los tests (más del doble). Por eso el DLT se usa con normalización; con ella, los errores observados son ruido de redondeo en doble precisión.
 
 ### 3.2 Ruido gaussiano en las 4 correspondencias del DLT
 
