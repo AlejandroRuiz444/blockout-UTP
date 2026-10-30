@@ -8,7 +8,7 @@ Cada integrante debe poder (1) explicar su módulo, (2) **seguir un punto desde 
 |---|---|---|
 | **A: escena y geometría** — Estudiante 1 | `src/scene/` (`pieces`, `mesh`, `container`, `scene`) y `src/animation/` (`easing`, `motion`, `victory`) | Qué es una pose (`R`, `t`) y por qué `M = T(p+t)·R·T(−p)`; el pivote (centro de un cubo ocupado: coordenadas semienteras ⇒ los giros de 90° caen en la retícula); `rotate` = `round(Rot·R)`; por qué `apply_action` es inmutable; qué rechaza (`fuera del contenedor`, `colisiona`); cómo salen las aristas visibles (regla de las 4 celdas alrededor de cada arista). *Cambio sugerido para probar:* añadir una pieza nueva en `RAW` de `pieces.js` (p. ej. el cubo suelto) y verla en el contenedor. |
 | **B: cámara y proyección** — Juan | `src/projection/` (`camera`, `projection`, `homography`) y `src/core/linalg.js` | Construcción de `R, t, K` (look-at propio), por qué `fy > 0`, perspectiva `(u,v) = (p₁/λ, p₂/λ)`, recorte contra `z_c ≥ near` antes de dividir, Liang–Barsky; derivación `H = K[r₁ r₂ t]`, DLT con normalización, por qué falla fuera del plano. *Cambio sugerido:* cambiar `near` o el FOV por defecto, o la altura `Z` del experimento. |
-| **C: interfaz y animación** — Yohan | `src/animation/demo.js` y `src/ui/` (`input`, `controller`, `hud`, `render`, `homography_panel`, `main`) | El flujo por fotograma, la victoria como `set_pose` (nunca coordenadas de pantalla), por qué la demo es una función pura del tiempo (determinismo), cómo siguen activos los controles de cámara. *Cambio sugerido:* cambiar la duración o la dispersión de la victoria (`EXPLODE`, `LIFT`) o una tecla en `input.js`. |
+| **C: interfaz y animación** — Yohan | `src/animation/demo.js` y `src/ui/` (`input`, `controller`, `hud`, `render`, `homography_panel`, `main`) | El flujo por fotograma, la victoria como `set_pose` (nunca coordenadas de pantalla), por qué la demo es una función pura del tiempo (determinismo), cómo siguen activos los controles de cámara. *Cambio sugerido:* cambiar la duración del vuelo, la altura del arco o el retraso entre piezas de la victoria (`FLY`, `ARC`, `STAGGER` en `victory.js`) o una tecla en `input.js`. |
 
 Todos deben entender la cadena completa: el enunciado dice que los roles marcan responsabilidades, no exclusividad del conocimiento.
 
@@ -20,16 +20,16 @@ Salida **real** de `node app/tests/trace.js` (escena por defecto; se selecciona 
 Pieza: Tornillo (3D) (p5), acciones: rotate x +90°, translate (0,0,+1) desde la escena por defecto
 Pivote local p = (1.5, 0.5, 1.5)
 R =
-  [ 1  0  0 ]
-  [ 0  0 -1 ]
-  [ 0  1  0 ]
+  [         1          0          0 ]
+  [         0          0         -1 ]
+  [         0          1          0 ]
 t = (3, 3, 3)
 
 M = T(p + t) · [R 0; 0 1] · T(−p)   (4×4, local -> mundo)
-  [ 1.000  0.000  0.000  3.000 ]
-  [ 0.000  0.000 -1.000  5.000 ]
-  [ 0.000  1.000  0.000  4.000 ]
-  [ 0.000  0.000  0.000  1.000 ]
+  [     1.000      0.000      0.000      3.000 ]
+  [     0.000      0.000     -1.000      5.000 ]
+  [     0.000      1.000      0.000      4.000 ]
+  [     0.000      0.000      0.000      1.000 ]
 
 PASO 1  vértice en coordenadas del OBJETO:   X_l = (2, 1, 2)
 PASO 2  M·[X_l 1]ᵀ  -> MUNDO:               X_w = (5.0000, 3.0000, 5.0000)   w = 1
