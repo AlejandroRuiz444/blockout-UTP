@@ -244,5 +244,5 @@ Comprobación compacta: `P·M·[1 0 1 1]ᵀ` da el mismo `λ`, `u`, `v`.
 
 | Fecha | Cambio | Módulos afectados | Responsable |
 |---|---|---|---|
-| [fecha] | Versión inicial del documento de interfaces | todos | Estudiante 1, Juan, Yohan |
-| 2026-10-23 | Reorganización en capas (`core`, `scene`, `projection`, `animation`, `ui`); la ficha 7 pasa de `PENT3D` a `I3`; `Anim` se divide en `Easing`, `Motion` y `Victory`; nuevos `Controller` y `Hud`; victoria de 8 s (torre); `Scene.polycube_edges` pasa a `Mesh.polycube_edges` (la API pública de escena, cámara y proyección no cambia) | escena, animación, interfaz | Estudiante 1, Yohan |
+| 2026-10-29 | Versión inicial del documento de interfaces (integrada en el PR #21) | todos | Estudiante 1, Juan, Yohan |
+| 2026-10-23 | Reorganización en capas (`core`, `scene`, `projection`, `animation`, `ui`); la ficha 7 pasa de `PENT3D` a `I3`; `Anim` se divide en `Easing`, `Motion` y `Victory`; nuevos `Controller` y `Hud`; victoria de 8 s (torre); `Scene.polycube_edges` pasa a `Mesh.polycube_edges` (la API pública de escena, cámara y proyección no cambia) | escena, animación, interfaz | Preparado con Claude Code a petición de un integrante, antes de existir el repositorio (ver `AI_USAGE.md` §2); integrado en el PR #21 |
