@@ -1,6 +1,6 @@
 # Plan de trabajo y seguimiento
 
-> **Estado (actualizado el 2026-10-30).** Este archivo tiene el estado real que consta en GitHub: PR integrados, *issues* y sus fechas, todo en **UTC** (Colombia es UTC−5). Los `[fecha]` que quedan son **fechas previstas** que el equipo no registró aquí; no se inventan, las completa el equipo. El enunciado pide actualizar el seguimiento al menos semanalmente, registrar fechas reales, bloqueos, decisiones y ajustes del cronograma, y vincular cada tarea con sus *commits* y solicitudes de integración (PR).
+> **Estado (actualizado el 2026-10-30).** Este archivo tiene el estado real que consta en GitHub: PR integrados, *issues* y sus fechas, todo en **UTC** (Colombia es UTC−5). Las **fechas previstas** no se registraron antes de implementar: figuran como «no registrada» y no se reconstruyen a posteriori (desviación que se reconoce en la sección 3). El enunciado pide actualizar el seguimiento al menos semanalmente, registrar fechas reales, bloqueos, decisiones y ajustes del cronograma, y vincular cada tarea con sus *commits* y solicitudes de integración (PR).
 >
 > **Nota de honestidad:** el código base de este repositorio fue preparado con asistencia de un agente de IA (ver [../AI_USAGE.md](../AI_USAGE.md)). Una tarea solo pasa a **terminada** cuando su responsable humano la revisó, la entiende, la explica y la integró por PR con revisión de otro compañero.
 
@@ -43,14 +43,14 @@ Los PR integrados están en [la lista de PR cerrados](https://github.com/Alejand
 
 ## 3. Cronograma e hitos
 
-La «fecha real» es la de la última *issue* del hito cerrada en GitHub (UTC).
+La «fecha real» es la de la última *issue* del hito cerrada en GitHub (UTC). Las **fechas previstas no se registraron** antes de implementar, como pide el enunciado: es una desviación del plan que se reconoce aquí y que no se corrige inventando fechas después.
 
 | Hito (enunciado) | Contenido | Fecha prevista | Fecha real | Revisión/integración prevista | Notas |
 |---|---|---|---|---|---|
-| 1. Diseño | repositorio y entorno, roles, convenciones, interfaces, plan de integración (T0–T3) | `[fecha]` | 2026-10-29 | `[fecha]` | PR #20 a #23 |
-| 2. Primera integración | contenedor y una pieza proyectados con la matriz de cámara (T4–T7) | `[fecha]` | 2026-10-30 | `[fecha]` | PR #24, #25 y #28 |
-| 3. Prototipo interactivo | todas las piezas, controles de objeto y cámara, experimento de homografía (T8–T10) | `[fecha]` | 2026-10-30 | `[fecha]` | PR #26, #27, #30 y #31 (según los hitos de GitHub) |
-| 4. Integración final | victoria, demo reproducible, verificaciones y documentación, Linux, video (T11–T16) | `[fecha]` | en curso | `[fecha]` | PR #29, #32 a #36 integrados (último: 2026-10-30); faltan las issues #18 (Linux) y #19 (cierre) |
+| 1. Diseño | repositorio y entorno, roles, convenciones, interfaces, plan de integración (T0–T3) | no registrada | 2026-10-29 | no registrada | PR #20 a #23 |
+| 2. Primera integración | contenedor y una pieza proyectados con la matriz de cámara (T4–T7) | no registrada | 2026-10-30 | no registrada | PR #24, #25 y #28 |
+| 3. Prototipo interactivo | todas las piezas, controles de objeto y cámara, experimento de homografía (T8–T10) | no registrada | 2026-10-30 | no registrada | PR #26, #27, #30 y #31 (según los hitos de GitHub) |
+| 4. Integración final | victoria, demo reproducible, verificaciones y documentación, Linux, video (T11–T16) | no registrada | en curso | no registrada | PR #29, #32 a #36 integrados (último: 2026-10-30); faltan las issues #18 (Linux) y #19 (cierre) |
 
 No se pospone la integración hasta que los tres módulos estén terminados: integrar pronto una versión mínima de extremo a extremo y ampliarla.
 
@@ -82,4 +82,5 @@ Este es el primer registro: el seguimiento semanal no se anotó en este archivo 
 
 | Semana / fecha | Avances reales | Bloqueos | Decisiones y ajustes del cronograma | Evidencia (commits / PR) |
 |---|---|---|---|---|
-| 2026-10-28 a 2026-10-30 | PR-01 a PR-17 integrados (PR #20 a #36), cada uno con la aprobación de un compañero distinto de su autor; 118 tests en verde en Node y 111 en el navegador; CI de `main` en verde | la protección de rama obliga a «Update branch» antes de integrar si `main` avanzó (#26, #28); las issues #12, #13 y #14 quedaron abiertas porque sus PR no llevaban `Closes` y se cerraron a mano; Linux de escritorio sin probar | ninguna registrada; el PR-18 (verificación en Linux) lo hará quien tenga una máquina Linux | [#20](https://github.com/AlejandroRuiz444/blockout-UTP/pull/20) a [#36](https://github.com/AlejandroRuiz444/blockout-UTP/pull/36) |
+| 2026-10-28 a 2026-10-30 | PR-01 a PR-17 integrados (PR #20 a #36), cada uno con la aprobación de un compañero distinto de su autor; 118 tests en verde en Node y 111 en el navegador; CI de `main` en verde | la protección de rama obliga a «Update branch» antes de integrar si `main` avanzó (#26, #28); las issues #12, #13 y #14 quedaron abiertas porque sus PR no llevaban `Closes` y se cerraron a mano; Linux de escritorio sin probar hasta el 2026-10-31 (ver el registro siguiente) | ninguna registrada en su momento; se reconoce que las fechas previstas no se registraron antes de implementar (§3) | [#20](https://github.com/AlejandroRuiz444/blockout-UTP/pull/20) a [#36](https://github.com/AlejandroRuiz444/blockout-UTP/pull/36) |
+| 2026-10-31 | PR #37 integrado (plan de trabajo con el estado real y declaración de contribuciones); PR #38 (PR-18, verificación en Linux: Ubuntu 24.04.3 en WSL2, Firefox y Chromium) abierto y en revisión; se corrigieron las etiquetas `estado:*` de las issues #10 a #14, #16 y #17 (cerradas) y de #18 y #19 | siguen pendientes el video grabado en Linux, el acceso del docente, la etiqueta `v1.0` y que Juan y Yohan confirmen su fila de `AI_USAGE.md` y su sección de `CONTRIBUCIONES.md` | ninguna | [#37](https://github.com/AlejandroRuiz444/blockout-UTP/pull/37), [#38](https://github.com/AlejandroRuiz444/blockout-UTP/pull/38) |
