@@ -70,5 +70,6 @@ Ver [../AI_USAGE.md](../AI_USAGE.md). Cambios generados con IA integrados por PR
 ## Qué falta para cerrar la issue #19
 
 - [ ] Que cada integrante verifique su sección y complete su «problema de integración».
-- [ ] Verificación en Linux (issue #18), video y enlace en el README.
+- [x] Verificación en Linux: Ubuntu 24.04.3 sobre WSL2, con Firefox y Chromium (PR #38, issue #18).
+- [ ] Video grabado en Linux por los tres, publicado en YouTube (cuenta UTP, acceso restringido) y su enlace en el README.
 - [ ] Crear la etiqueta `v1.0` y actualizar la primera línea de este archivo.
