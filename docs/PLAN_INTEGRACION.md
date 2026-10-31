@@ -16,10 +16,10 @@ Cómo el código y la documentación entran al repositorio: **por etapas, en *pu
 
 | Ola | Hito del enunciado | Contenido | PR | Fechas previstas |
 |---|---|---|---|---|
-| Ola 0 | Hito 1 · Diseño | entorno, arquitectura, interfaces y álgebra base | PR-01, PR-02, PR-03, PR-04 | `[fecha inicio]` – `[fecha fin]` |
-| Ola 1 | Hito 2 · Primera integración | escena, cámara/proyección y un contenedor con una pieza en pantalla | PR-05, PR-06, PR-07 | `[fecha inicio]` – `[fecha fin]` |
-| Ola 2 | Hito 3 · Prototipo interactivo | entrada, HUD, homografía y animaciones | PR-08, PR-09, PR-10, PR-11 | `[fecha inicio]` – `[fecha fin]` |
-| Ola 3 | Hito 4 · Integración final | demo, controlador, interfaz final, informe, pruebas de arquitectura y documentación | PR-12, PR-13, PR-14, PR-15, PR-16, PR-17 | `[fecha inicio]` – `[fecha fin]` |
+| Ola 0 | Hito 1 · Diseño | entorno, arquitectura, interfaces y álgebra base | PR-01, PR-02, PR-03, PR-04 | no registradas |
+| Ola 1 | Hito 2 · Primera integración | escena, cámara/proyección y un contenedor con una pieza en pantalla | PR-05, PR-06, PR-07 | no registradas |
+| Ola 2 | Hito 3 · Prototipo interactivo | entrada, HUD, homografía y animaciones | PR-08, PR-09, PR-10, PR-11 | no registradas |
+| Ola 3 | Hito 4 · Integración final | demo, controlador, interfaz final, informe, pruebas de arquitectura y documentación | PR-12, PR-13, PR-14, PR-15, PR-16, PR-17 | no registradas |
 
 ## Lista de PR
 
@@ -120,4 +120,5 @@ Si el orden o el reparto cambian (bloqueos, ausencias, correcciones), se registr
 
 | Fecha | Cambio | Motivo | Quién |
 |---|---|---|---|
-| `[fecha]` | | | |
+| 2026-10-30 | Se añade un PR de cierre documental ([#37](https://github.com/AlejandroRuiz444/blockout-UTP/pull/37): plan de trabajo con el estado real y declaración de contribuciones), que no figuraba en la lista de 18 PR | el enunciado pide fechas reales y enlaces reales en el plan y en la declaración de contribuciones | Estudiante 1 |
+| 2026-10-31 | El PR-18 (verificación en Linux) lo hace Estudiante 1 ([#38](https://github.com/AlejandroRuiz444/blockout-UTP/pull/38)), en una Ubuntu 24.04 sobre WSL2 | el plan decía «quien pruebe en Linux»; Estudiante 1 dispone de WSL2 con Ubuntu (el plan permite una máquina virtual o WSL) | Estudiante 1 |
