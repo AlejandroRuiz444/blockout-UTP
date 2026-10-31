@@ -38,7 +38,7 @@ Piezas (tomadas de `InitPolyCube.cpp` del BlockOut original, que no se incluye e
 ## Tests
 
 ```
-node app/tests/run.js          # desde la terminal (probado con Node 20.19.0 en Windows 11 y 20.20.2 en Ubuntu 24.04 vía GitHub Actions; no se probaron otras versiones)
+node app/tests/run.js          # desde la terminal (probado con Node 20.19.0 en Windows 11, 20.20.2 en Ubuntu 24.04 vía GitHub Actions y 18.19.1 en Ubuntu 24.04.3 sobre WSL2; no se probaron otras versiones)
 ```
 
 o abrir `app/tests/index.html` en el navegador (ejecuta las mismas verificaciones salvo las de arquitectura, que leen archivos). Cubren: álgebra (`A·A⁻¹ = I`, transpuesta), rotaciones (`RᵀR = I`, `det = +1`), rigidez de las piezas, ejemplo dorado compartido, que mover la cámara no altera `get_geometry`, puntos en/ tras el plano de la cámara, recorte contra el plano cercano, NaN/Infinity, homografía (error < 1e-6 px en el plano y claramente > 0 fuera de él), animación de victoria (torre, giro y regreso, continuidad), determinismo de la demo, controlador, HUD y reglas de arquitectura por capas.
@@ -84,8 +84,10 @@ Capas (las dependencias solo bajan): `core` ← `scene` y `projection` (no se co
 | Chrome 156 (headless, Windows 11, `file://`) | **Probado**: `app/tests/index.html` → «TODO CORRECTO: 111 verificaciones» y `app/index.html` abre y dibuja la escena sin mensajes de consola (sin interacción) |
 | Ubuntu 24.04 en GitHub Actions: Node 20.20.2 y Chrome headless | **Probado en el CI**, en cada PR y en cada push a `main`: tests de Node (118/118), tests del navegador (111/111) y la aplicación abre sin mensajes de consola. El log no registra la versión de Chrome de esa imagen |
 | Interacción (teclado, ratón, victoria, demo, panel de homografía) | **Probada a mano por los revisores del PR-14 ([#34](https://github.com/AlejandroRuiz444/blockout-UTP/pull/34))**: Juan en Opera GX (sin errores en la consola, según su reseña) y Yohan en el navegador integrado de VS Code (según la descripción del PR); ambos con `file://`. Versiones y sistemas operativos de esos navegadores: no registrados. Con eventos sintéticos de Chrome 155, antes de subir el código, se probó lo mismo (ver [AI_USAGE.md](AI_USAGE.md) §3) |
-| Linux de escritorio (Firefox y Chromium, a mano) | **No verificado.** Pendiente de verificar por el equipo (el enunciado exige ejecución en Linux; PR-18). El código usa solo APIs estándar (Canvas 2D, eventos de teclado `code`, `requestAnimationFrame`) |
-| Firefox, Edge, Safari | No probados |
+| Ubuntu 24.04.3 LTS en WSL2 (Windows 11, kernel 6.6.87.2-microsoft-standard-WSL2): Node 18.19.1 | **Probado** sobre `e402e1f` (repositorio clonado dentro de Ubuntu): `node app/tests/run.js` → 118 correctos, 0 fallidos. Pasan también con Node 18 (el de `apt` en Ubuntu 24.04), no solo con Node 20. Es Linux dentro de Windows (WSL2), no una instalación nativa en un equipo |
+| Ubuntu 24.04.3 en WSL2 (ventanas por WSLg): Firefox 159.0 y Chromium 156.0.8078.47 (ambos `snap`), con `file://` | **Probado**: `app/tests/index.html` → «TODO CORRECTO: 111 verificaciones» en los dos (en modo headless) y `app/index.html` dibuja la escena y el panel en los dos (capturas). En Chromium headless no apareció ningún mensaje de consola al cargar la app ni los tests; la consola de Firefox no se revisó |
+| Interacción en Linux (Firefox y Chromium: teclado, ratón, victoria, demo, panel de homografía, choque con la pared) | **Probada a mano por Alejandro** en Chromium y en Firefox (ventanas reales por WSLg, con `file://`): declara que probó todos los controles y que todo funciona. Hay dos capturas de pantalla (en el PR #38): Chromium con la aplicación (pieza 3 seleccionada, «Última acción: rotate → OK» y la cadena de proyección en vivo) y Firefox con la aplicación tras ejecutar la victoria («Animación de victoria terminada: las piezas volvieron a su pose original», con la cámara orbitada), y en los dos navegadores la pestaña de los tests con el título «OK 111/111». **Es una declaración suya:** no se anotó control por control y no consta que se revisara la consola (F12) a mano |
+| Edge, Safari; Firefox en Windows o macOS | No probados |
 
 ## Limitaciones conocidas
 

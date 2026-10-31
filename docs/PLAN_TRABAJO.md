@@ -37,7 +37,7 @@ Los PR integrados están en [la lista de PR cerrados](https://github.com/Alejand
 | T11 | Animación de victoria (poses 3D, misma cadena de proyección, cámara activa) | Estudiante 1 | T4, T6 | tests de victoria en verde | [#26](https://github.com/AlejandroRuiz444/blockout-UTP/pull/26) |
 | T12 | Modo demostración determinista | Yohan | T11 | dos ejecuciones idénticas; muestra los 4 bloques en orden | [#32](https://github.com/AlejandroRuiz444/blockout-UTP/pull/32) |
 | T13 | Documentación: README, INFORME, GUIA_DEMO, AI_USAGE | todos | T10, T12 | revisados por pares y consistentes con el código | [#29](https://github.com/AlejandroRuiz444/blockout-UTP/pull/29) (informe), [#35](https://github.com/AlejandroRuiz444/blockout-UTP/pull/35) (pruebas de arquitectura), [#36](https://github.com/AlejandroRuiz444/blockout-UTP/pull/36) (README, guía y AI_USAGE) |
-| T14 | Verificación en Linux (Firefox y Chromium) | todos | T9, T12 | app y tests ejecutados en Linux; anotado en README | pendiente: issue [#18](https://github.com/AlejandroRuiz444/blockout-UTP/issues/18) |
+| T14 | Verificación en Linux (Firefox y Chromium) | todos | T9, T12 | app y tests ejecutados en Linux; anotado en README | ejecutado en Ubuntu 24.04.3 sobre WSL2 y anotado en el README (PR-18, issue [#18](https://github.com/AlejandroRuiz444/blockout-UTP/issues/18)); la interacción a mano en Chromium y Firefox la declara Alejandro, sin detalle por control |
 | T15 | Video de sustentación (YouTube, cuenta UTP, acceso del docente verificado) | todos | T14 | URL en el README | pendiente: issue [#19](https://github.com/AlejandroRuiz444/blockout-UTP/issues/19) |
 | T16 | Integración final, etiqueta de versión y declaración de contribuciones | Estudiante 1 | T13–T15 | etiqueta `v[X.Y]` creada; declaración con enlaces | pendiente: issue [#19](https://github.com/AlejandroRuiz444/blockout-UTP/issues/19); borrador en [CONTRIBUCIONES.md](CONTRIBUCIONES.md) |
 
@@ -72,7 +72,7 @@ No se pospone la integración hasta que los tres módulos estén terminados: int
 | T11 | terminada | Estudiante 1 | 2026-10-30 | #26; la rama se actualizó con `main` antes de integrar (protección de rama) |
 | T12 | terminada | Yohan | 2026-10-30 | #32 (demo) y #33 (controlador) |
 | T13 | en curso | todos | 2026-10-30 | integrados #29, #35 y #36; falta que Juan y Yohan confirmen su fila de `AI_USAGE.md` §6 y el problema de integración real de `GUIA_DEMO.md` §4 |
-| T14 | pendiente | todos | 2026-10-30 | solo el CI de Ubuntu (Node y Chrome headless); falta la prueba manual en Firefox y Chromium (#18) |
+| T14 | en revisión | todos | 2026-10-31 | tests de Node (118/118, Node 18) y del navegador (111/111) en Firefox 159 y Chromium 156 sobre Ubuntu 24.04.3 en WSL2; Alejandro declara que probó a mano todos los controles en ambos (con captura); el video en Linux de los tres sigue pendiente (#18, #19) |
 | T15 | pendiente | todos | 2026-10-30 | falta grabar y publicar el video |
 | T16 | pendiente | Estudiante 1 | 2026-10-30 | faltan la etiqueta `v1.0` y verificar la declaración de contribuciones (#19) |
 

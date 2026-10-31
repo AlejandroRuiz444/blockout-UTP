@@ -140,4 +140,4 @@ El botón/tecla **Homografía (H)** abre un panel con la vista 1 y la vista 2: p
 - Los pasos de pieza son por retícula entera; las poses continuas existen únicamente durante animaciones.
 - Distorsión de lente no modelada (cámara pinhole ideal). El experimento usa puntos sin ruido y ruido gaussiano isótropo e independiente; no se estima la homografía con RANSAC ni con más de 4 puntos en el ruido.
 - Los valores numéricos de la tabla dependen de la configuración indicada; con otra cámara cambian los errores, no las conclusiones.
-- Verificado en Chrome 155 (headless) sobre Windows 11. **No se ha verificado en Linux ni en Firefox** (ver README).
+- Verificado en Chrome 156 (headless) sobre Windows 11. En Linux se ejecutó en Ubuntu 24.04 mediante el CI de GitHub (tests de Node y de Chrome headless) y, a mano, en Firefox y Chromium sobre WSL2 (declaración de un integrante); el detalle, y lo que no consta, está en el README. Edge y Safari no se probaron.
